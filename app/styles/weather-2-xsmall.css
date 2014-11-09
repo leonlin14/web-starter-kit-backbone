@@ -1,0 +1,23 @@
+.weather-forecast {
+  width: 100%;
+}
+
+.seven-day-fc {
+  border-top: 0;
+}
+
+.seven-day-fc:last-of-type {
+  border-bottom: 0;
+}
+
+.seven-day-fc .date {
+  width: 30%;
+}
+
+.seven-day-fc .seven-day-temp {
+  width: 30%;
+}
+
+.seven-day-fc .pcount {
+  width: 16%;
+}

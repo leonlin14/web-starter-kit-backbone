@@ -1,0 +1,262 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="A front-end template that helps you build fast, modern mobile web apps.">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimal-ui">
+
+
+    <title>How to choose breakpoints</title>
+
+    <!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <link rel="icon" sizes="196x196" href="images/touch/chrome-touch-icon-196x196.png">
+
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Web Starter Kit">
+
+    <!-- Tile icon for Win8 (144x144 + tile color) -->
+    <meta name="msapplication-TileImage" content="images/touch/ms-touch-icon-144x144-precomposed.png">
+    <meta name="msapplication-TileColor" content="#3372DF">
+
+    <!-- SEO: If your mobile URL is different from the desktop URL, add a canonical link to the desktop page https://developers.google.com/webmasters/smartphone-sites/feature-phones -->
+    <!--
+    <link rel="canonical" href="http://www.example.com/">
+    -->
+
+    <!-- build:css styles/components/main.min.css -->
+<!--
+    <link rel="stylesheet" href="styles/h5bp.css">
+    <link rel="stylesheet" href="styles/components/components.css">
+    <link rel="stylesheet" href="styles/main.css">
+-->
+    <!-- endbuild -->
+    
+    <style>
+      html, body {
+        width: 100%;
+        height: 100%;
+
+        margin: 0;
+        padding: 0;
+      }
+      
+      body {
+        background-color: #21212b;
+      }
+
+      .tab-bar-container{
+        width: 100%;
+
+        position: fixed;
+
+        top: 0;
+        left: 0;
+
+        box-sizing: border-box;
+
+        background-color: #e65050;
+        background-image: -o-linear-gradient(bottom, #e25d5e 0%, #d44040 100%);
+        background-image: -moz-linear-gradient(bottom, #e25d5e 0%, #d44040 100%);
+        background-image: -webkit-linear-gradient(bottom, #e25d5e 0%, #d44040 100%);
+        background-image: -ms-linear-gradient(bottom, #e25d5e 0%, #d44040 100%);
+        background-image: linear-gradient(to bottom, #e25d5e 0%, #d44040 100%);
+      }
+
+      .app-bar {
+        display: -ms-flexbox; /* IE 10 */
+        display: -webkit-flex; /* Safari 6.1 */
+        display: flex;
+        
+        width: 100%;
+        height: 48px;
+
+        -ms-flex-direction: row;
+        -webkit-flex-direction: row;
+        flex-direction: row;
+
+        border-bottom-style: solid;
+        border-width: 1px;
+        border-color: rgba(255, 255, 255, 0.3);
+      }
+
+      .app-bar .logo {
+        -ms-flex: 1;
+        -webkit-flex: 1;
+        flex: 1;
+        
+        font-size: 20px;
+        line-height: 48px;
+        
+        margin: 0 16px;
+        
+        color: #fdf1f1;
+
+        float: none;
+        max-width: none;
+      }
+
+      .app-bar .logo a {
+        text-decoration: none;
+        color: inherit;
+        font-weight: normal;
+      }
+
+      .app-bar button {
+        width: 48px;
+        height: 48px;
+        
+        background-image: none;
+        background-color: transparent;
+        
+        border: none;
+
+        padding: 0;
+
+        margin-right: 16px;
+      }
+
+      .app-bar button img {
+        width: 32px;
+        height: 32px;
+      }
+
+      .app-bar-actions  {
+        display: -ms-flexbox; /* IE 10 */
+        display: -webkit-flex; /* Safari 6.1 */
+        display: flex;
+        
+        -ms-flex-direction: row;
+        -webkit-flex-direction: row;
+        flex-direction: row;
+      }
+
+      .search {
+        display: none;
+        
+        width: 400px;
+        height: 60px;
+        
+        padding: 16px;
+        margin: 0;
+        
+        box-sizing: border-box;
+        
+        border: none;
+      }
+
+      .tab-bar {
+        display: -ms-flexbox; /* IE 10 */
+        display: -webkit-flex; /* Safari 6.1 */
+        display: flex;
+        
+        width: 100%;
+        
+        -ms-flex-direction: row;
+        -webkit-flex-direction: row;
+        flex-direction: row;
+      }
+
+      .tab-bar button {
+        -ms-flex: 1;
+        -webkit-flex: 1;
+        flex: 1;
+
+        padding: 4px;
+        
+        border: none;
+        border-right-style: solid;
+        border-width: 1px;
+        border-color: rgba(255, 255, 255, 0.3);
+        border-radius: 0;
+
+        background-color: transparent;
+        
+        color: #fdf1f1;
+
+        -webkit-transition: background-color 0.4s ease-out;
+        transition: background-color 0.4s ease-out;
+
+        -webkit-tap-highlight-color: transparent;
+      }
+
+      .tab-bar button:hover {
+        background-color: rgba(255, 255, 255, 0.1);
+      }
+      .tab-bar button:focus {
+        background-color: rgba(255, 255, 255, 0.2);
+        outline: 0;
+      }
+      .tab-bar button:active {
+        background-color: rgba(255, 255, 255, 0.4);
+        outline: 0;
+      }
+      .tab-bar button.selected {
+        background-color: rgba(255, 255, 255, 0.4);
+      }
+      .tab-bar button:last-child {
+        border-right-style: none;
+      }
+      .tab-bar button img {
+        width: 32px;
+        height: auto;
+      }
+      .tab-bar button span {
+        font-size: 12px;
+      }
+    </style>
+
+  </head>
+  <body>
+    <div class="tab-bar-container">
+      <header class="app-bar">
+        <h1 class="logo"><a href="index.html">Logo Back</a></h1>
+        <section class="app-bar-actions">
+          <input class="search" placeholder="Search">
+          <button><img src="images/icons/search.png"></button>
+        </section>
+      </header>
+
+      <nav class="tab-bar">
+        <button class="tab-btn tab-1" data-tabsection="info-tab-content">
+          <img src="images/icons/about-icon-light.png"><br>
+          <span>About</span>
+        </button>
+        <button class="tab-btn tab-2" data-tabsection="blog-tab-content">
+          <img src="images/icons/blog-icon-light.png"><br>
+          <span>Blog</span>
+        </button>
+        <button class="tab-btn tab-3" data-tabsection="photo-tab-content">
+          <img src="images/icons/photo-icon-light.png"><br>
+          <span>Photos</span>
+        </button>
+        <button class="tab-btn tab-4" data-tabsection="contact-tab-content">
+          <img src="images/icons/contact-icon-light.png"><br>
+          <span>Contact</span>
+        </button>
+      </nav>
+    </div>
+
+    <!-- Tab Bar -->
+    
+
+    <!-- build:js scripts/main.min.js -->
+    <script src="scripts/main.js"></script>
+    <!-- endbuild -->
+
+    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+      ga('create', 'UA-XXXXX-X');
+      ga('send', 'pageview');
+    </script>
+    <!-- Built with love using Web Starter Kit -->
+  </body>
+</html>

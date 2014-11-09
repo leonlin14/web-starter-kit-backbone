@@ -1,0 +1,238 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="A front-end template that helps you build fast, modern mobile web apps.">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimal-ui">
+
+
+    <title>How to choose breakpoints</title>
+
+    <!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <link rel="icon" sizes="196x196" href="images/touch/chrome-touch-icon-196x196.png">
+
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Web Starter Kit">
+
+    <!-- Tile icon for Win8 (144x144 + tile color) -->
+    <meta name="msapplication-TileImage" content="images/touch/ms-touch-icon-144x144-precomposed.png">
+    <meta name="msapplication-TileColor" content="#3372DF">
+
+    <!-- SEO: If your mobile URL is different from the desktop URL, add a canonical link to the desktop page https://developers.google.com/webmasters/smartphone-sites/feature-phones -->
+    <!--
+    <link rel="canonical" href="http://www.example.com/">
+    -->
+
+    <!-- build:css styles/components/main.min.css -->
+<!--
+    <link rel="stylesheet" href="styles/h5bp.css">
+    <link rel="stylesheet" href="styles/components/components.css">
+    <link rel="stylesheet" href="styles/main.css">
+-->
+    <!-- endbuild -->
+    
+    <style>
+      html, body {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        display: block;
+        padding-bottom: 72px;
+
+        box-sizing: border-box;
+
+        background-image: url('images/grass_close_up.jpg');
+        background-size: cover;
+        background-position: fixed;
+        background-repeat: no-repeat;
+      }
+      .tab-bar {
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;
+        
+        width: 100%;
+        
+        position: fixed;
+
+        left: 0;
+        bottom: 0;
+        
+        -ms-flex-direction: row;
+        -webkit-flex-direction: row;
+        flex-direction: row;
+
+        -ms-flex-pack: justify;
+        -webkit-justify-content: space-around;
+        justify-content: space-around;
+
+        background-image: -o-linear-gradient(top, #000 0%, transparent 100%);
+        background-image: -moz-linear-gradient(top, #000 0%, transparent 100%);
+        background-image: -webkit-linear-gradient(top, #000 0%, transparent 100%);
+        background-image: -ms-linear-gradient(top, #000 0%, transparent 100%);
+        background-image: linear-gradient(to top, #000 0%, transparent 100%);
+
+        z-index: 2;
+      }
+
+      .tab-bar button {
+        width: 40px;
+        height:40px;
+        
+        margin: 16px;
+        
+        border: none;
+        
+        background-color: rgba(254, 254, 254, 0.7);
+        
+        border-radius: 100%;
+        
+        padding: 0;
+        
+        -webkit-transition: background-color 0.4s ease-out;
+        transition: background-color 0.4s ease-out;
+        
+        -webkit-tap-highlight-color: transparent;
+        
+        z-index: 2;
+      }
+
+      .tab-bar button img {
+        width: 32px;
+        height: auto;
+      }
+
+      .tab-bar button:hover {
+        background-color: rgba(254, 254, 254, 0.8);
+      }
+
+      .tab-bar button:focus {
+        background-color: rgba(254, 254, 254, 0.9);
+        outline: 0;
+      }
+
+      .tab-bar button:active {
+        background-color: rgba(255, 255, 255, 1.0);
+      }
+
+      .tab-bar button.selected {
+        background-color: rgba(254, 254, 254, 1.0);
+      }
+
+      .content-container {
+        position: relative;
+        display: block;
+
+        width: 100%;
+        height: auto;
+      }
+      .tab-content {
+        position: absolute;
+
+        display: inline-block;
+
+        width: 100%;
+
+        padding: 16px 16px 72px 16px;
+
+        box-sizing: border-box;
+
+        opacity: 0;
+
+        -webkit-transition: opacity 0.2s ease-out;
+        transition: opacity 0.2s ease-out;
+
+        z-index: 1;
+      }
+      .tab-content.selected {
+        opacity: 1;
+        -webkit-transition: opacity 0.2s ease-out 0.2s;
+        transition: opacity 0.2s ease-out 0.2s;
+      }
+    </style>
+  </head>
+  <body>
+<div id="application">
+      <nav class="tab-bar">
+        <button class="tab-btn selected" data-tabsection="info-tab-content"><img src="images/icons/about-icon.png"></button>
+        <button class="tab-btn" data-tabsection="blog-tab-content"><img src="images/icons/blog-icon.png"></button>
+        <button class="tab-btn" data-tabsection="photo-tab-content"><img src="images/icons/photo-icon.png"></button>
+        <button class="tab-btn" data-tabsection="contact-tab-content"><img src="images/icons/contact-icon.png"></button>
+      </nav>
+
+      <div class="content-container">
+        <section id="info-tab-content" class="tab-content selected">
+          <h1>About</h1>
+          <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>
+
+          <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>
+
+          <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>
+
+          <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>
+
+          <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>
+
+          <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>
+
+          <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>
+
+          <a href="index.html">back</a>
+        </section>
+
+        <section id="blog-tab-content" class="tab-content">
+          <h1>Blog</h1>
+
+          <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>
+
+          <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>
+
+          <a href="index.html">back</a>
+        </section>
+
+        <section id="photo-tab-content" class="tab-content">
+          <h1>Photo</h1>
+
+          <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>
+
+          <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>
+
+          <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>
+
+          <a href="index.html">back</a>
+        </section>
+
+        <section id="contact-tab-content" class="tab-content">
+          <h1>Contact</h1>
+
+          <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>
+
+          <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>
+
+          <a href="index.html">back</a>
+        </section>
+      </div>
+</div>
+
+    <script src="vendor/requirejs/require.js" data-main="scripts/tabBarCircle.js" type="text/javascript"></script>
+
+    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+      ga('create', 'UA-XXXXX-X');
+      ga('send', 'pageview');
+    </script>
+    <!-- Built with love using Web Starter Kit -->
+  </body>
+</html>
